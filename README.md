@@ -23,20 +23,50 @@ A practical AI application platform built with Spring AI, integrating DeepSeek &
 
 ## Features 功能
 
-| Module 模块 | Description 说明 | Model 模型 |
-|-------------|-------------------|-------------|
-| 🤖 **AI Chat** 智能聊天 | Multimodal conversation (text / image / audio) | Alibaba Qwen3.5-omni-plus |
-| 📞 **Customer Service** 智能客服 | Function calling with course reservation tools | Alibaba Qwen-plus |
-| 💕 **Comfort Simulator** 哄哄模拟器 | Role-playing game "Coax Your Girlfriend" | DeepSeek deepseek-v4-pro |
-| 📄 **ChatPDF** 文档问答 | Retrieval-Augmented Generation (RAG) over PDFs | DeepSeek + text-embedding-v4 |
+### 🤖 AI Chat 智能聊天
 
-### Key Highlights 技术亮点
+Powered by **Alibaba Qwen3.5-omni-plus**, supports streaming multimodal conversation:
+
+- **Text** — Natural conversation with chat memory (last 20 messages)
+- **Image** — Upload images for visual recognition and Q&A
+- **Audio** — Upload audio files for transcription and analysis
+- **Streaming** — Real-time token-by-token output via `Flux<String>`, no waiting for full response
+- **Memory** — Conversation history persisted in MySQL via `JdbcChatMemoryRepository`
+
+### 📞 Customer Service 智能客服
+
+Powered by **Alibaba Qwen-plus** with Spring AI **Function Calling** (`@Tool`)：
+
+- **Course Inquiry** — AI reads the course database to answer "有哪些编程课程？" "Java 多少钱？"
+- **Campus Lookup** — AI queries school campuses to recommend the nearest location
+- **Auto Reservation** — AI fills in student name, phone, course, and campus to create a reservation record
+- **Seamless Handoff** — When AI leaves out a required field, it naturally asks the user before calling the tool
+
+### 💕 Comfort Simulator 哄哄模拟器
+
+Powered by **DeepSeek deepseek-v4-pro**, a "Coax Your Girlfriend" role-playing game:
+
+- **Forgiveness Meter** — 0/100 scoring system with ± point changes based on dialogue quality
+- **Emotional States** — AI role-plays hurt / cold / softening / happy girlfriend with expressive dialogue
+- **3 Difficulty Modes** — Easy / Normal / Hard determine girlfriend's temper and forgiveness threshold
+- **40-message Limit** — Game ends at 40 turns or 100 forgiveness, with win/lose epilogue
+- **Streaming Output** — Real-time game narration, no lag between turns
+
+### 📄 ChatPDF 文档问答
+
+Powered by **DeepSeek deepseek-v4-pro** + **text-embedding-v4 (1024-dim)**, a complete RAG pipeline:
+
+- **PDF Upload** — Drag & drop PDF files; validated server-side as `application/pdf`
+- **Vector Indexing** — PDF parsed and embedded into `SimpleVectorStore` with `QuestionAnswerAdvisor`
+- **Semantic Search** — `topK=2` most relevant chunks retrieved per query with 0.5 similarity threshold
+- **Context-Aware** — Each query scoped to the current conversation (`chatId`) via filter expressions
+- **File Download** — Previously uploaded PDFs can be downloaded via `/ai/pdf/file/{chatId}`
+
+### Key Highlights
 
 - **Multi-Model Architecture** — DeepSeek for games/RAG, Alibaba Bailian for chat/tools
-- **Function Calling** — AI autonomously queries courses and creates reservations via Spring AI `@Tool`
-- **RAG Pipeline** — PDF ingestion → Vector Store (in-memory) → QuestionAnswerAdvisor
-- **Streaming Responses** — All chat endpoints use `Flux<String>` for real-time output
 - **OpenAI-Compatible** — Uses Spring AI's OpenAI client pattern to connect to Alibaba DashScope
+- **Streaming All The Way** — Every chat endpoint returns `Flux<String>` for real-time output
 
 ## Preview 功能预览
 
