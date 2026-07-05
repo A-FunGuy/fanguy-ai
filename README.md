@@ -13,13 +13,17 @@ AI 应用平台，基于 Spring Boot + Vue.js。
 
 ## 功能预览
 
-| AI 聊天 | 智能客服 |
-|---------|----------|
-| ![AI聊天](docs/images/ai-chat.png) | ![智能客服](docs/images/customer-service.png) |
+### 🤖 AI 聊天
+![AI聊天](docs/images/ai-chat.png)
 
-| 哄哄模拟器 | ChatPDF |
-|------------|---------|
-| ![哄哄模拟器](docs/images/comfort-simulator.png) | ![ChatPDF](docs/images/chat-pdf.png) |
+### 📞 智能客服
+![智能客服](docs/images/customer-service.png)
+
+### 💕 哄哄模拟器
+![哄哄模拟器](docs/images/comfort-simulator.png)
+
+### 📄 ChatPDF
+![ChatPDF](docs/images/chat-pdf.png)
 
 ## 技术栈
 
