@@ -35,9 +35,12 @@ MYSQL_PASSWORD=xxx
 
 ### 数据库
 
-```sql
--- 执行 fanguy-ai/src/main/resources/sql/schema-mysql.sql 建表
--- 执行 fanguy-ai/src/main/resources/sql/CustomerService.sql 导入课程/校区数据
+```bash
+# 1. 建库 + 聊天记忆表
+mysql -u root -p < fanguy-ai/src/main/resources/sql/schema-mysql.sql
+
+# 2. 课程/校区/预约表 + 种子数据
+mysql -u root -p < fanguy-ai/src/main/resources/sql/CustomerService.sql
 ```
 
 ### 启动
