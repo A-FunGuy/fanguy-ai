@@ -1,3 +1,9 @@
+CREATE DATABASE IF NOT EXISTS fanguy_ai
+    DEFAULT CHARACTER SET utf8mb4
+    DEFAULT COLLATE utf8mb4_general_ci;
+
+USE fanguy_ai;
+
 -- 导出  表.course 结构
 DROP TABLE IF EXISTS `course`;
 CREATE TABLE IF NOT EXISTS `course` (

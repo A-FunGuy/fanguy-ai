@@ -1,3 +1,9 @@
+CREATE DATABASE IF NOT EXISTS fanguy_ai
+    DEFAULT CHARACTER SET utf8mb4
+    DEFAULT COLLATE utf8mb4_general_ci;
+
+USE fanguy_ai;
+
 CREATE TABLE IF NOT EXISTS SPRING_AI_CHAT_MEMORY (
         `id` BIGINT(19) NOT NULL AUTO_INCREMENT,
         `conversation_id` VARCHAR(36) NOT NULL COLLATE 'utf8mb4_general_ci',
