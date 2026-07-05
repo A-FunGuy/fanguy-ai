@@ -1,6 +1,6 @@
 # 方盖 AI (FanGuy AI)
 
-AI 应用平台，基于 Spring Boot + Vue.js。
+AI 应用平台：多模态聊天、智能客服、RAG 问答、角色扮演游戏，基于 Spring Boot + Vue.js。
 
 ## 功能
 
