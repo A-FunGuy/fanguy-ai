@@ -11,6 +11,16 @@ AI 应用平台，基于 Spring Boot + Vue.js。
 | 💕 哄哄模拟器 | 角色扮演小游戏《哄女友大作战》 | DeepSeek deepseek-v4-pro |
 | 📄 ChatPDF | PDF 文档 RAG 问答 | DeepSeek + text-embedding-v4 |
 
+## 功能预览
+
+| AI 聊天 | 智能客服 |
+|---------|----------|
+| ![AI聊天](docs/images/ai-chat.png) | ![智能客服](docs/images/customer-service.png) |
+
+| 哄哄模拟器 | ChatPDF |
+|------------|---------|
+| ![哄哄模拟器](docs/images/comfort-simulator.png) | ![ChatPDF](docs/images/chat-pdf.png) |
+
 ## 技术栈
 
 **后端**
