@@ -25,42 +25,51 @@ A practical AI application platform built with Spring AI, integrating DeepSeek &
 
 ### 🤖 AI Chat 智能聊天
 
-Powered by **Alibaba Qwen3.5-omni-plus**, supports streaming multimodal conversation:
+基于 **阿里云百炼 Qwen3.5-omni-plus**，支持流式多模态对话：
 
-- **Text** — Natural conversation with chat memory (last 20 messages)
-- **Image** — Upload images for visual recognition and Q&A
-- **Audio** — Upload audio files for transcription and analysis
-- **Streaming** — Real-time token-by-token output via `Flux<String>`, no waiting for full response
-- **Memory** — Conversation history persisted in MySQL via `JdbcChatMemoryRepository`
+- **文字聊天** — 自然对话，带会话记忆（最近 20 条消息），支持连续上下文
+- **图片识别** — 上传图片进行视觉识别和问答，适合各类图文场景
+- **音频处理** — 上传音频文件，AI 自动转录并分析内容
+- **流式输出** — 基于 `Flux<String>` 实现 token 级别实时输出，无需等待完整响应
+- **记忆持久化** — 会话历史通过 `JdbcChatMemoryRepository` 存入 MySQL，重启不丢失
+
+> *Multimodal streaming chat with text / image / audio powered by Alibaba Qwen3.5-omni-plus.*
 
 ### 📞 Customer Service 智能客服
 
-Powered by **Alibaba Qwen-plus** with Spring AI **Function Calling** (`@Tool`)：
+基于 **阿里云百炼 Qwen-plus**，结合 Spring AI **函数调用**（`@Tool`）：
 
-- **Course Inquiry** — AI reads the course database to answer "有哪些编程课程？" "Java 多少钱？"
-- **Campus Lookup** — AI queries school campuses to recommend the nearest location
-- **Auto Reservation** — AI fills in student name, phone, course, and campus to create a reservation record
-- **Seamless Handoff** — When AI leaves out a required field, it naturally asks the user before calling the tool
+- **课程查询** — AI 读取课程数据库，回答用户关于课程类型、价格、学历要求等问题
+- **校区查询** — 自动查询校区列表，为用户推荐最近的上课地点
+- **自动预约** — AI 收集学生姓名、电话、课程、校区等信息，自动创建预约记录
+- **无缝追问** — 缺少必填字段时，AI 会自然地向用户追问，补全信息后再调用工具
+- **真实业务闭环** — 从咨询到预约全流程自动化，可直接用于线上客服场景
+
+> *Intelligent customer service with function calling — AI queries courses and creates reservations autonomously via Spring AI @Tool.*
 
 ### 💕 Comfort Simulator 哄哄模拟器
 
-Powered by **DeepSeek deepseek-v4-pro**, a "Coax Your Girlfriend" role-playing game:
+基于 **DeepSeek deepseek-v4-pro**，"哄女友大作战"角色扮演小游戏：
 
-- **Forgiveness Meter** — 0/100 scoring system with ± point changes based on dialogue quality
-- **Emotional States** — AI role-plays hurt / cold / softening / happy girlfriend with expressive dialogue
-- **3 Difficulty Modes** — Easy / Normal / Hard determine girlfriend's temper and forgiveness threshold
-- **40-message Limit** — Game ends at 40 turns or 100 forgiveness, with win/lose epilogue
-- **Streaming Output** — Real-time game narration, no lag between turns
+- **原谅值系统** — 0/100 分数机制，每轮对话根据质量 ± 分数，满分通关
+- **情绪变化** — AI 扮演生气 / 冷漠 / 缓和 / 开心等多种情绪状态，语气生动传神
+- **三种难度** — 普通 / 困难 / 地狱模式，影响女友脾气和原谅难度
+- **回合限制** — 40 回合或达成 100 原谅值游戏结束，附带胜利/失败结局
+- **实时反馈** — 每句对话实时显示情绪状态 + 得分变化 + 原谅值进度
+
+> *Role-playing game with forgiveness meter, emotional states, and 3 difficulty levels powered by DeepSeek.*
 
 ### 📄 ChatPDF 文档问答
 
-Powered by **DeepSeek deepseek-v4-pro** + **text-embedding-v4 (1024-dim)**, a complete RAG pipeline:
+基于 **DeepSeek deepseek-v4-pro** + **text-embedding-v4 (1024维)**，完整的 RAG 检索增强生成链路：
 
-- **PDF Upload** — Drag & drop PDF files; validated server-side as `application/pdf`
-- **Vector Indexing** — PDF parsed and embedded into `SimpleVectorStore` with `QuestionAnswerAdvisor`
-- **Semantic Search** — `topK=2` most relevant chunks retrieved per query with 0.5 similarity threshold
-- **Context-Aware** — Each query scoped to the current conversation (`chatId`) via filter expressions
-- **File Download** — Previously uploaded PDFs can be downloaded via `/ai/pdf/file/{chatId}`
+- **PDF 上传** — 拖拽上传 PDF 文件，服务端校验 `application/pdf` 格式
+- **向量索引** — PDF 解析后通过 `SimpleVectorStore` 建立向量索引，配合 `QuestionAnswerAdvisor` 检索
+- **语义检索** — 每次查询取 `topK=2` 个最相关文档片段，相似度阈值 0.5
+- **上下文隔离** — 通过 `chatId` 过滤表达式，不同会话的文档互不干扰
+- **文件回传** — 已上传的 PDF 可通过 `/ai/pdf/file/{chatId}` 接口下载
+
+> *RAG pipeline — PDF upload → vector indexing → semantic search → context-aware Q&A powered by DeepSeek + text-embedding-v4.*
 
 ### Key Highlights
 
