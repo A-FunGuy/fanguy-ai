@@ -24,6 +24,14 @@ Thumbs.db
 .DS_Store
 Desktop.ini
 
+# === Runtime data ===
+*.pdf
+chat-pdf.json
+chat-pdf.properties
+
+# === Binary ===
+*.exe
+
 # === Secrets ===
 *.env
 .env.*
