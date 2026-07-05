@@ -1,0 +1,29 @@
+# === IDE ===
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# === Maven ===
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# === Node / Frontend ===
+node_modules/
+dist/
+*.log
+
+# === Nginx ===
+spring-ai-nginx/logs/
+spring-ai-nginx/html/assets/*.map
+
+# === OS ===
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# === Secrets ===
+*.env
+.env.*
